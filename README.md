@@ -1,4 +1,4 @@
-# 👮 `obsidian`
+# 👮 `obsidian-auth`
 
 > [!WARNING]
 > This library is still in development and is not published anywhere (yet).
