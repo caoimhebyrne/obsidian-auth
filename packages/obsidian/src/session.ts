@@ -1,5 +1,3 @@
-import { generateRandomId } from "./random";
-
 export interface Session {
     // A unique identifier for this session object.
     id: string;
