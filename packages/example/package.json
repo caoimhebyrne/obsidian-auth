@@ -1,0 +1,20 @@
+{
+	"name": "@obsidian/example",
+	"description": "An opinionated authentication library for JavaScript.",
+	"version": "0.0.1",
+	"license": "MIT",
+	"author": {
+		"email": "hello@caoimhe.dev",
+		"name": "Caoimhe Byrne",
+		"url": "https://caoimhe.dev"
+	},
+	"type": "module",
+	"scripts": {
+		"build": "tsup",
+		"start": "tsup && node ./dist/index.js"
+	},
+	"devDependencies": {
+		"tsup": "^8.3.4",
+		"typescript": "^5.6.3"
+	}
+}
