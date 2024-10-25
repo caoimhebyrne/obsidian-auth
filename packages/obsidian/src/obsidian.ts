@@ -43,7 +43,7 @@ export class Obsidian {
      * @param id The ID of the session to retrieve.
      * @return The session if it exists, otherwise null.
      */
-    public async getSession(id: string) {
+    public async getSession(id: string): Promise<Session | null> {
         return this.adapter.getSessionById(id);
     }
 
