@@ -10,7 +10,7 @@
         "start": "tsup && node ./dist/index.js"
     },
     "dependencies": {
-        "@obsidian/adapter-postgresql": "workspace:^",
+        "@obsidian-auth/adapter-postgresql": "workspace:^",
         "obsidian-auth": "workspace:^",
         "pg": "^8.13.1"
     },

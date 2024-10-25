@@ -22,14 +22,13 @@
         "build": "tsup",
         "build-watch": "tsup --watch"
     },
+    "dependencies": {
+        "obsidian-auth": "workspace:^"
+    },
     "devDependencies": {
         "@obsidian/config-typescript": "workspace:^",
         "@types/node": "^22.8.0",
-        "obsidian": "workspace:^",
         "tsup": "^8.3.4",
         "typescript": "^5.6.3"
-    },
-    "peerDependencies": {
-        "obsidian": "workspace:^"
     }
 }

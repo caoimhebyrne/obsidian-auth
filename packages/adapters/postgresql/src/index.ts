@@ -1,4 +1,4 @@
-import type { Adapter, Session } from "obsidian";
+import type { Adapter, Session } from "obsidian-auth";
 import type { Pool } from "pg";
 
 type SessionSchema = {

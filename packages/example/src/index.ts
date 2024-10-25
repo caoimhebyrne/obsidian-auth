@@ -1,5 +1,5 @@
-import { postgresAdapter } from "@obsidian/adapter-postgresql";
-import { createObsidian } from "obsidian";
+import { postgresAdapter } from "@obsidian-auth/adapter-postgresql";
+import { createObsidian } from "obsidian-auth";
 import pg from "pg";
 
 // Create the connection pool.

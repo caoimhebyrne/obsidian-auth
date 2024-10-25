@@ -1,7 +1,7 @@
 {
     "name": "@obsidian-auth/adapter-postgresql",
     "description": "A PostgreSQL adapter for Obsidian, the opinionated authentication library for JavaScript.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "license": "MIT",
     "author": {
         "email": "hello@caoimhe.dev",
@@ -29,7 +29,6 @@
         "@obsidian/config-typescript": "workspace:^",
         "@types/node": "^22.8.0",
         "@types/pg": "^8.11.10",
-        "obsidian": "workspace:^",
         "pg": "^8.13.1",
         "tsup": "^8.3.4",
         "typescript": "^5.6.3"

@@ -13,7 +13,7 @@ to provide authentication features.
 **obsidian.ts**
 ```ts
 import { stubAdapter } from "@obsidian/adapter-stub"; // An adapter that does nothing.
-import { createObsidian } from "obsidian";
+import { createObsidian } from "obsidian-auth";
 
 export const obsidian = createObsidian(stubAdapter(), {
     // I would like my sessions to last for 2 weeks.

@@ -1,4 +1,4 @@
-import type { Adapter, Session } from "obsidian";
+import type { Adapter, Session } from "obsidian-auth";
 
 /**
  * A stub adpater for Obsidian.

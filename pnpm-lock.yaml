@@ -16,6 +16,10 @@ importers:
         version: 2.2.3
 
   packages/adapters/postgresql:
+    dependencies:
+      obsidian-auth:
+        specifier: workspace:^
+        version: link:../../obsidian
     devDependencies:
       '@obsidian/config-typescript':
         specifier: workspace:^
@@ -26,9 +30,6 @@ importers:
       '@types/pg':
         specifier: ^8.11.10
         version: 8.11.10
-      obsidian:
-        specifier: workspace:^
-        version: link:../../obsidian
       pg:
         specifier: ^8.13.1
         version: 8.13.1
@@ -40,6 +41,10 @@ importers:
         version: 5.6.3
 
   packages/adapters/stub:
+    dependencies:
+      obsidian-auth:
+        specifier: workspace:^
+        version: link:../../obsidian
     devDependencies:
       '@obsidian/config-typescript':
         specifier: workspace:^
@@ -47,9 +52,6 @@ importers:
       '@types/node':
         specifier: ^22.8.0
         version: 22.8.0
-      obsidian:
-        specifier: workspace:^
-        version: link:../../obsidian
       tsup:
         specifier: ^8.3.4
         version: 8.3.4(typescript@5.6.3)
@@ -61,10 +63,10 @@ importers:
 
   packages/example:
     dependencies:
-      '@obsidian/adapter-postgresql':
+      '@obsidian-auth/adapter-postgresql':
         specifier: workspace:^
         version: link:../adapters/postgresql
-      obsidian:
+      obsidian-auth:
         specifier: workspace:^
         version: link:../obsidian
       pg:
