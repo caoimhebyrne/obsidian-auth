@@ -9,9 +9,10 @@ to provide authentication features.
 
 **obsidian.ts**
 ```ts
+import { stubAdapter } from "@obsidian/adpater-stub"; // An adapter that does nothing.
 import { createObsidian } from "obsidian";
 
-export const obsidian = createObsidian({
+export const obsidian = createObsidian(stubAdapter(), {
     // I would like my sessions to last for 2 weeks.
     sessionDuration: 14 * 24 * 60 * 60
 });
@@ -21,7 +22,7 @@ export const obsidian = createObsidian({
 ```ts
 import { obsidian } from "./obsidian";
 
-const session = obsidian.createSession("userabcd");
+const session = await obsidian.createSession("userabcd");
 //    ^ { sessionId: string, userId: string, ... }
 ```
 

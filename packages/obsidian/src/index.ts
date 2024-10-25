@@ -1,5 +1,7 @@
+import type { Adapter } from "./adapter";
 import { Obsidian, type ObsidianOptions } from "./obsidian";
 
+export * from "./adapter";
 export * from "./obsidian";
 export * from "./random";
 export * from "./session";
@@ -25,6 +27,6 @@ type ObsidianOptionsWithDefaults = RequiredObsidianOptions & Partial<ObsidianOpt
  * @param options The options to build Obsidian with
  * @returns An instance of {@link Obsidian}
  */
-export const createObsidian = (options: ObsidianOptionsWithDefaults): Obsidian => {
-    return new Obsidian({ ...defaultObsidianOptions, ...options });
+export const createObsidian = (adapter: Adapter, options: ObsidianOptionsWithDefaults): Obsidian => {
+    return new Obsidian(adapter, { ...defaultObsidianOptions, ...options });
 };

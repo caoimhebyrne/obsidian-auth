@@ -10,6 +10,7 @@
         "start": "tsup && node ./dist/index.js"
     },
     "dependencies": {
+        "@obsidian/adapter-stub": "workspace:^",
         "obsidian": "workspace:^"
     },
     "devDependencies": {

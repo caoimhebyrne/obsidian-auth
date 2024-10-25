@@ -1,0 +1,4 @@
+{
+    "extends": "@obsidian/config-typescript",
+    "include": ["src"]
+}

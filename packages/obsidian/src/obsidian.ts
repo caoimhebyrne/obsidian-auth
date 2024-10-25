@@ -1,3 +1,4 @@
+import type { Adapter } from "./adapter";
 import { generateRandomId } from "./random";
 import type { Session } from "./session";
 
@@ -16,6 +17,11 @@ export type ObsidianOptions = {
 
 export class Obsidian {
     /**
+     * The adapter to use for persisting changes.
+     */
+    private adapter: Adapter;
+
+    /**
      * The duration of a session in seconds.
      */
     private sessionDuration: number;
@@ -25,7 +31,8 @@ export class Obsidian {
      */
     private sessionLength: number;
 
-    public constructor(options: ObsidianOptions) {
+    public constructor(adapter: Adapter, options: ObsidianOptions) {
+        this.adapter = adapter;
         this.sessionDuration = options.sessionDuration;
         this.sessionLength = options.sessionLength;
     }
@@ -36,8 +43,13 @@ export class Obsidian {
      * @param user The ID of the user that session belongs to.
      * @returns The created session object.
      */
-    public createSession(userId: string): Session {
+    public async createSession(userId: string): Promise<Session> {
         const expiresAt = new Date(Date.now() + this.sessionDuration * 1000);
-        return { id: generateRandomId(this.sessionLength), userId, expiresAt };
+        const session = { id: generateRandomId(this.sessionLength), userId, expiresAt };
+
+        // Before we can return the session, we should store it through the adapter.
+        await this.adapter.createSession(session);
+
+        return session;
     }
 }

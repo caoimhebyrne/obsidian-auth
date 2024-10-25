@@ -15,10 +15,31 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
 
+  packages/adapters/stub:
+    devDependencies:
+      '@obsidian/config-typescript':
+        specifier: workspace:^
+        version: link:../../config-typescript
+      '@types/node':
+        specifier: ^22.8.0
+        version: 22.8.0
+      obsidian:
+        specifier: workspace:^
+        version: link:../../obsidian
+      tsup:
+        specifier: ^8.3.4
+        version: 8.3.4(typescript@5.6.3)
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+
   packages/config-typescript: {}
 
   packages/example:
     dependencies:
+      '@obsidian/adapter-stub':
+        specifier: workspace:^
+        version: link:../adapters/stub
       obsidian:
         specifier: workspace:^
         version: link:../obsidian
