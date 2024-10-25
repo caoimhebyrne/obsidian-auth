@@ -1,4 +1,4 @@
-import type { Adapter, Session } from "obsidian-auth";
+import type { Adapter, Session, User } from "obsidian-auth";
 
 /**
  * A stub adpater for Obsidian.
@@ -12,6 +12,16 @@ export class StubAdapter implements Adapter {
 
     public createSession(session: Session): Promise<void> {
         console.log("stub: create session", session);
+        return Promise.resolve();
+    }
+
+    public getUserById(id: string): Promise<User | null> {
+        console.log("stub: get user", id);
+        return Promise.resolve(null);
+    }
+
+    public createUser(user: User): Promise<void> {
+        console.log("stub: create user", user);
         return Promise.resolve();
     }
 }

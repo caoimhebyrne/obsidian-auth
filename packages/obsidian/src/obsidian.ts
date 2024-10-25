@@ -1,6 +1,7 @@
 import type { Adapter } from "./adapter";
 import { generateRandomId } from "./random";
 import type { Session } from "./session";
+import type { User } from "./user";
 
 export type ObsidianOptions = {
     /**
@@ -61,5 +62,26 @@ export class Obsidian {
         await this.adapter.createSession(session);
 
         return session;
+    }
+
+    /**
+     * Retrieves a {@link User} by its unique id.
+     *
+     * @param id The ID of the user to retrieve.
+     * @return The user if it exists, otherwise null.
+     */
+    public getUserById(id: string): Promise<User | null> {
+        return this.adapter.getUserById(id);
+    }
+
+    /**
+     * Creates a {@link User}.
+     * @returns The created user object.
+     */
+    public async createUser(userId: string): Promise<User> {
+        const user: User = { id: userId };
+        await this.adapter.createUser(user);
+
+        return user;
     }
 }

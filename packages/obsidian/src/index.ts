@@ -5,6 +5,7 @@ export * from "./adapter";
 export * from "./obsidian";
 export * from "./random";
 export * from "./session";
+export * from "./user";
 
 export const defaultObsidianOptions = {
     sessionLength: 32,

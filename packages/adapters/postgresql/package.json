@@ -1,7 +1,7 @@
 {
     "name": "@obsidian-auth/adapter-postgresql",
     "description": "A PostgreSQL adapter for Obsidian, the opinionated authentication library for JavaScript.",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "license": "MIT",
     "author": {
         "email": "hello@caoimhe.dev",

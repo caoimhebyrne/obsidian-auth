@@ -1,4 +1,5 @@
 import type { Session } from "./session";
+import type { User } from "./user";
 
 export interface Adapter {
     /**
@@ -14,4 +15,18 @@ export interface Adapter {
      * @param session The session to create.
      */
     createSession(session: Session): Promise<void>;
+
+    /**
+     * Retrieves a {@link User} by its ID.
+     *
+     * @param id The user ID to retrieve.
+     * @returns The user if it exists, otherwise null.
+     */
+    getUserById(id: string): Promise<User | null>;
+
+    /**
+     * Instructs the adapter to store the provided {@link user} in its underlying storage provider.
+     * @param user The user to create.
+     */
+    createUser(user: User): Promise<void>;
 }
