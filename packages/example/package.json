@@ -3,7 +3,7 @@
     "description": "An opinionated authentication library for JavaScript.",
     "version": "0.0.1",
     "license": "MIT",
-    "private": "true",
+    "private": true,
     "type": "module",
     "scripts": {
         "build": "tsup",
@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@obsidian/adapter-postgresql": "workspace:^",
-        "obsidian": "workspace:^",
+        "obsidian-auth": "workspace:^",
         "pg": "^8.13.1"
     },
     "devDependencies": {
