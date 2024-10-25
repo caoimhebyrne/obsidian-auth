@@ -5,3 +5,7 @@ const obsidian = createObsidian(stubAdapter(), { sessionDuration: 14 * 24 * 60 *
 const session = await obsidian.createSession("caoimhe");
 
 console.log(`created a session! id: ${session.id}`);
+
+const returnedSession = await obsidian.getSession(session.id);
+
+console.log("returned session:", returnedSession);

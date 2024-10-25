@@ -38,6 +38,16 @@ export class Obsidian {
     }
 
     /**
+     * Retrieves a {@link Session} by its unique id.
+     *
+     * @param id The ID of the session to retrieve.
+     * @return The session if it exists, otherwise null.
+     */
+    public async getSession(id: string) {
+        return this.adapter.getSessionById(id);
+    }
+
+    /**
      * Creates a {@link Session} for a specific user.
      *
      * @param user The ID of the user that session belongs to.
