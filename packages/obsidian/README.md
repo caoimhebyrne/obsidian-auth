@@ -9,7 +9,7 @@ to provide authentication features.
 
 **obsidian.ts**
 ```ts
-import { stubAdapter } from "@obsidian-auth/adapter-postgres"; // An adapter that does nothing.
+import { stubAdapter } from "@obsidian-auth/adapter-stub"; // An adapter that does nothing.
 import { createObsidian } from "obsidian-auth";
 
 export const obsidian = createObsidian(stubAdapter(), {
