@@ -1,5 +1,5 @@
 {
-    "name": "obsidian",
+    "name": "obsidian-auth",
     "description": "An opinionated authentication library for JavaScript.",
     "version": "0.0.1",
     "license": "MIT",
