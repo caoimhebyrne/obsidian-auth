@@ -41,6 +41,9 @@ importers:
       '@obsidian/config-typescript':
         specifier: workspace:^
         version: link:../config-typescript
+      '@types/node':
+        specifier: ^22.8.0
+        version: 22.8.0
       tsup:
         specifier: ^8.3.4
         version: 8.3.4(typescript@5.6.3)
