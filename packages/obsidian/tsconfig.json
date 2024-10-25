@@ -1,24 +1,4 @@
 {
-	"compilerOptions": {
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"target": "ES2022",
-		"allowJs": true,
-		"resolveJsonModule": true,
-		"moduleDetection": "force",
-		"isolatedModules": true,
-		"verbatimModuleSyntax": true,
-
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"noImplicitOverride": true,
-
-		"declaration": true,
-
-		"module": "preserve",
-		"noEmit": true,
-
-		"lib": ["es2022"]
-	},
+	"extends": "@obsidian/config-typescript",
 	"include": ["src"]
 }
