@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=obsidian
+      - POSTGRES_USER=obsidian
+      - POSTGRES_DB=example_db
