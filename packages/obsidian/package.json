@@ -8,6 +8,11 @@
         "name": "Caoimhe Byrne",
         "url": "https://caoimhe.dev"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/caoimhebyrne/obsidian-auth.git",
+        "directory": "packages/obsidian"
+    },
     "type": "module",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
