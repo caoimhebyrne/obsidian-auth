@@ -1,10 +1,10 @@
 {
-	"name": "@obsidian/config-typescript",
-	"version": "1.0.0",
-	"description": "A TypeScript configuration to be used by all projects in the obsidian monorepo.",
-	"private": true,
-	"license": "MIT",
-	"exports": {
-		".": "./tsconfig.json"
-	}
+    "name": "@obsidian/config-typescript",
+    "version": "1.0.0",
+    "description": "A TypeScript configuration to be used by all projects in the obsidian monorepo.",
+    "private": true,
+    "license": "MIT",
+    "exports": {
+        ".": "./tsconfig.json"
+    }
 }

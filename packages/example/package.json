@@ -1,21 +1,21 @@
 {
-	"name": "@obsidian/example",
-	"description": "An opinionated authentication library for JavaScript.",
-	"version": "0.0.1",
-	"license": "MIT",
-	"private": "true",
-	"type": "module",
-	"scripts": {
-		"build": "tsup",
-		"start": "tsup && node ./dist/index.js"
-	},
-	"dependencies": {
-		"obsidian": "workspace:^"
-	},
-	"devDependencies": {
-		"@obsidian/config-typescript": "workspace:^",
-		"@types/node": "^22.8.0",
-		"tsup": "^8.3.4",
-		"typescript": "^5.6.3"
-	}
+    "name": "@obsidian/example",
+    "description": "An opinionated authentication library for JavaScript.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "private": "true",
+    "type": "module",
+    "scripts": {
+        "build": "tsup",
+        "start": "tsup && node ./dist/index.js"
+    },
+    "dependencies": {
+        "obsidian": "workspace:^"
+    },
+    "devDependencies": {
+        "@obsidian/config-typescript": "workspace:^",
+        "@types/node": "^22.8.0",
+        "tsup": "^8.3.4",
+        "typescript": "^5.6.3"
+    }
 }

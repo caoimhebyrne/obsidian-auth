@@ -1,19 +1,20 @@
 {
-	"name": "obsidian-repo",
-	"description": "An opinionated authentication library for JavaScript.",
-	"author": {
-		"email": "hello@caoimhe.dev",
-		"name": "Caoimhe Byrne",
-		"url": "https://caoimhe.dev"
-	},
-	"license": "MIT",
-	"version": "0.0.1",
-	"packageManager": "pnpm@9.12.2",
-	"scripts": {
-		"build": "turbo build"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"turbo": "^2.2.3"
-	}
+    "name": "obsidian-repo",
+    "description": "An opinionated authentication library for JavaScript.",
+    "author": {
+        "email": "hello@caoimhe.dev",
+        "name": "Caoimhe Byrne",
+        "url": "https://caoimhe.dev"
+    },
+    "license": "MIT",
+    "version": "0.0.1",
+    "packageManager": "pnpm@9.12.2",
+    "scripts": {
+        "build": "turbo build",
+        "format": "biome format --write ."
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.9.4",
+        "turbo": "^2.2.3"
+    }
 }
