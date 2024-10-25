@@ -8,7 +8,7 @@ export * from "./session";
 export * from "./user";
 
 export const defaultObsidianOptions = {
-    sessionLength: 32,
+    sessionIdLength: 32,
 } satisfies Partial<ObsidianOptions>;
 
 /**

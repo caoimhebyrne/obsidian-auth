@@ -13,7 +13,7 @@ export type ObsidianOptions = {
      * The length of a session ID.
      * 32 is the default value, and is also the recommended value.
      */
-    sessionLength: number;
+    sessionIdLength: number;
 };
 
 export class Obsidian {
@@ -30,12 +30,12 @@ export class Obsidian {
     /**
      * The length of a generated session ID.
      */
-    private sessionLength: number;
+    private sessionIdLength: number;
 
     public constructor(adapter: Adapter, options: ObsidianOptions) {
         this.adapter = adapter;
         this.sessionDuration = options.sessionDuration;
-        this.sessionLength = options.sessionLength;
+        this.sessionIdLength = options.sessionIdLength;
     }
 
     /**
@@ -56,7 +56,7 @@ export class Obsidian {
      */
     public async createSession(userId: string): Promise<Session> {
         const expiresAt = new Date(Date.now() + this.sessionDuration * 1000);
-        const session = { id: generateRandomId(this.sessionLength), userId, expiresAt };
+        const session = { id: generateRandomId(this.sessionIdLength), userId, expiresAt };
 
         // Before we can return the session, we should store it through the adapter.
         await this.adapter.createSession(session);
