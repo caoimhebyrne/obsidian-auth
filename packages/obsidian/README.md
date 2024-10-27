@@ -9,12 +9,16 @@ to provide authentication features.
 
 **obsidian.ts**
 ```ts
-import { stubAdapter } from "@obsidian-auth/adapter-stub"; // An adapter that does nothing.
-import { createObsidian } from "obsidian-auth";
+import { postgresAdapter } from "@obsidian-auth/adapter-postgres";
+import { createObsidian, passwordAuthentication } from "obsidian-auth";
+import { myPostgresPool } from "./database";
 
-export const obsidian = createObsidian(stubAdapter(), {
+export const obsidian = createObsidian(postgresAdapter(myPostgresPool), {
     // I would like my sessions to last for 2 weeks.
-    sessionDuration: 14 * 24 * 60 * 60
+    sessionDuration: 14 * 24 * 60 * 60,
+
+    // I would like to authenticate my users with a password (hashed via Argon2id).
+    authenticationStrategies: [passwordAuthentication],
 });
 ```
 
@@ -22,7 +26,16 @@ export const obsidian = createObsidian(stubAdapter(), {
 ```ts
 import { obsidian } from "./obsidian";
 
-const session = await obsidian.createSession("userabcd");
+// Creating a user with an authentication strategy.
+const user = await obsidian.createUser("myuser", { strategy: "password", value: "MySuperSecurePassword" });
+//    ^: { id: string }
+
+// Authenticating a user through a configured authentication strategy.
+const authenticatedUser = await obsidian.authenticate("myuser", "password", "BadPassword");
+console.log(authenticatedUser) // null (the password is invalid!)
+
+// Creating a session for a user.
+const session = await obsidian.createSession("myuser");
 //    ^ { sessionId: string, userId: string, ... }
 ```
 
