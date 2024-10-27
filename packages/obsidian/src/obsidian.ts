@@ -122,9 +122,24 @@ export class Obsidian<A extends AuthenticationStrategyFactories> {
      * Creates a {@link User}.
      * @returns The created user object.
      */
-    public async createUser(userId: string): Promise<User> {
+    public async createUser(
+        userId: string,
+        authentication?: { strategy: A[number]["name"]; value: string },
+    ): Promise<User> {
         const user: User = { id: userId };
         await this.adapter.createUser(user);
+
+        if (authentication) {
+            // This should technically always have a value if using TypeScript, so it would be better if we could "strongly"
+            // type this somehow?
+            const strategy = this.authenticationStrategies.find((it) => it.name === authentication.strategy);
+            if (!strategy) {
+                throw `Failed to find strategy by name '${authentication.strategy}'`;
+            }
+
+            const instance = strategy.factory(this);
+            await instance.create(userId, authentication?.value);
+        }
 
         return user;
     }
