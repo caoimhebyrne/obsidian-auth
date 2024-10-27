@@ -11,6 +11,10 @@ type UserSchema = {
     id: string;
 };
 
+type AuthenticationValueSchema = {
+    value: string;
+};
+
 /**
  * A PostgreSQL adpater for Obsidian.
  */
@@ -57,6 +61,30 @@ export class PostgresAdapter implements Adapter {
     public async createUser(user: User): Promise<void> {
         const query = "insert into users (id) values ($1)";
         const values = [user.id];
+
+        await this.connection.query(query, values);
+    }
+
+    public async getAuthenticationValue(userId: string, authenticationStrategy: string): Promise<string | null> {
+        const query = "select value from authentication where user_id = $1 and authentication_strategy_id = $2";
+        const values = [userId, authenticationStrategy];
+
+        const result = await this.connection.query<AuthenticationValueSchema>(query, values);
+        const row = result.rows[0];
+        if (!row) {
+            return null;
+        }
+
+        return row.value;
+    }
+
+    public async storeAuthenticationValue(
+        userId: string,
+        authenticationStrategy: string,
+        value: string,
+    ): Promise<void> {
+        const query = "insert into authentication (user_id, authentication_strategy_id, value) values ($1, $2, $3)";
+        const values = [userId, authenticationStrategy, value];
 
         await this.connection.query(query, values);
     }

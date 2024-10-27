@@ -29,4 +29,22 @@ export interface Adapter {
      * @param user The user to create.
      */
     createUser(user: User): Promise<void>;
+
+    /**
+     * Retrieves an authentication value for a specific user and strategy.
+     *
+     * @param userId The user to fetch the value for.
+     * @param authenticationStrategy The strategy to fetch the value for.
+     * @returns The value if it exists, otherwise null.
+     */
+    getAuthenticationValue(userId: string, authenticationStrategy: string): Promise<string | null>;
+
+    /**
+     * Instructs the adapter to store the provided value for authentication in its underlying storage provider.
+     *
+     * @param userId The user to store the value for.
+     * @param authenticationStrategy The name of this authentication strategy.
+     * @param value The value to store.
+     */
+    storeAuthenticationValue(userId: string, authenticationStrategy: string, value: string): Promise<void>;
 }

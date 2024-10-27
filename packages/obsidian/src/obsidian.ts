@@ -1,9 +1,10 @@
 import type { Adapter } from "./adapter";
+import type { AuthenticationStrategyFactories } from "./authentication-strategy";
 import { generateRandomId } from "./random";
 import type { Session } from "./session";
 import type { User } from "./user";
 
-export type ObsidianOptions = {
+export type ObsidianOptions<A extends AuthenticationStrategyFactories> = {
     /**
      * The duration of a session in seconds.
      */
@@ -14,13 +15,18 @@ export type ObsidianOptions = {
      * 32 is the default value, and is also the recommended value.
      */
     sessionIdLength: number;
+
+    /**
+     * The authentication strategies to use in this Obsidian instance.
+     */
+    authenticationStrategies: A;
 };
 
-export class Obsidian {
+export class Obsidian<A extends AuthenticationStrategyFactories> {
     /**
      * The adapter to use for persisting changes.
      */
-    private adapter: Adapter;
+    public adapter: Adapter;
 
     /**
      * The duration of a session in seconds.
@@ -32,10 +38,48 @@ export class Obsidian {
      */
     private sessionIdLength: number;
 
-    public constructor(adapter: Adapter, options: ObsidianOptions) {
+    /**
+     * The authentication strategies configured by the user.
+     */
+    private authenticationStrategies: A;
+
+    public constructor(adapter: Adapter, options: ObsidianOptions<A>) {
         this.adapter = adapter;
+        this.authenticationStrategies = options.authenticationStrategies;
         this.sessionDuration = options.sessionDuration;
         this.sessionIdLength = options.sessionIdLength;
+    }
+
+    /**
+     * Attempts to authenticate the provided user ID with a certain strategy.
+     *
+     * @param userId The ID of the user to authenticate.
+     * @param authenticationStrategy The name of the authentication strategy to use.
+     * @param value The value to authenticate with.
+     *
+     * @returns The user if the authenticationStrategy permits the provided value, otherwise null.
+     */
+    public async authenticate(
+        userId: string,
+        authenticationStrategy: A[number]["name"],
+        value: string,
+    ): Promise<User | null> {
+        // This should technically always have a value if using TypeScript, so it would be better if we could "strongly"
+        // type this somehow?
+        const strategy = this.authenticationStrategies.find((it) => it.name === authenticationStrategy);
+        if (!strategy) {
+            throw `Failed to find strategy by name '${authenticationStrategy}'`;
+        }
+
+        // Once we find the strategy factory, we can construct an instance and attempt to authenticate the user.
+        const instance = strategy.factory(this);
+        const authenticated = await instance.authenticate(userId, value);
+        if (!authenticated) {
+            return null;
+        }
+
+        // The authentication strategy has authenticated the user, we can return the user object.
+        return await this.getUserById(userId);
     }
 
     /**
